@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block body %}
+<div class="row">
+  <h1 class="text-center">{{models[name].title}}</h1>
+  <div class="col-md-6 offset-md-3">
+    {% if prediction==0 or prediction==2%}
+    <div class="alert alert-success" role="alert">
+      <h1>Result: {{models[name].result_no}}</h1>
+    </div>
+    {% endif %} {% if prediction==1%}
+    <div class="alert alert-danger" role="alert">
+      <h1>Result: {{models[name].result_yes}}</h1>
+    </div>
+    {% endif %}
+
+    <form action="/predictor/{{name}}" method="post" enctype="multipart/form-data">
+
+      <div class="mb-3">
+        <label class="form-label" for="mri_image">MRI image of Brain</label>
+        <input type="file" class="form-control" id="mri_image" name="file" accept="image/gif, image/jpeg, image/png"
+          required onchange="loadFile(event)"/>
+
+        <img class="m-3" id="output" />
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-success">Predict</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  var loadFile = function (event) {
+    var output = document.getElementById("output");
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+      URL.revokeObjectURL(output.src); // free memory
+    };
+  };
+</script>
+{% endblock body %}

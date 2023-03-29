@@ -1,0 +1,6 @@
+numpy
+scikit-learn
+scipy
+pickle-mixin
+flask
+keras
