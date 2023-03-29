@@ -9,5 +9,5 @@ so I request you to run the model training file
 
 by running the above file it will save the model trained
 
-then run app.py file
+then run app.py file to use the web app
 
