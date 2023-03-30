@@ -7,7 +7,7 @@ so I request you to run the model training file
 
 ./model_training/brain_tumor.ipynb
 
-by running the above file it will save the model trained
+by running the above file it will train the model and save it
 
 then run app.py file to use the web app
 
